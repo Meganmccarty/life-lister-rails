@@ -8,15 +8,21 @@ class RecordsController < ApplicationController
     end
 
     def create
-        record = Record.create!(record_params)
+        taxon_entered = params[:taxon]
+        result = InaturalistApi.fetch(taxon_entered)
+        taxon = Taxon.taxon_from_api(result)
+
+        record = Record.new!(record_params)
+        record.taxon_id = taxon.id
+        record.save
         render json: record, status: :created
     end
 
-    def record_params
-        params.permit(:species, :common_name, :image, :date)
-    end
-
     private
+
+    def record_params
+        params.permit(:date, :notes)
+    end
 
     def render_not_found_response
         render json: { error: "Record not found" }, status: :not_found
