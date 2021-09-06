@@ -9,6 +9,6 @@ class TaxonsController < ApplicationController
     private
 
     def render_not_found_response
-        render json: { error: "Record not found" }, status: :not_found
+        render json: { error: "Taxon not found" }, status: :not_found
     end
 end
