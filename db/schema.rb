@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_01_184237) do
+ActiveRecord::Schema.define(version: 2021_09_06_161510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "records", force: :cascade do |t|
+    t.date "date_seen"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "taxon_id"
+    t.string "notes"
+    t.integer "user_id"
+    t.index ["taxon_id"], name: "index_records_on_taxon_id"
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
+  create_table "taxons", force: :cascade do |t|
     t.string "species"
     t.string "common_name"
     t.string "image"
-    t.date "date_seen"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
