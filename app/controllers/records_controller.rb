@@ -24,10 +24,30 @@ class RecordsController < ApplicationController
         render json: record, status: :created
     end
 
+    def update
+        record = find_record
+        record.update(
+            category: params[:category],
+            date_seen: params[:date],
+            notes: params[:notes],
+        )
+        render json: record
+    end
+
+    def destroy
+        record = find_record
+        record.destroy
+        head :no_content
+    end
+
     private
 
     def record_params
         params.permit(:taxon, :category, :date, :notes)
+    end
+
+    def find_record
+        Record.find(params[:id])
     end
 
     def render_not_found_response
