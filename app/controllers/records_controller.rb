@@ -12,16 +12,21 @@ class RecordsController < ApplicationController
         result = InaturalistApi.fetch(taxon_entered)
         taxon = Taxon.taxon_from_api(result)
 
-        record = Record.new!(record_params)
-        record.taxon_id = taxon.id
-        record.save
+        user = User.find_by(id: session[:user_id])
+
+        record = Record.create!(
+            date_seen: params[:date],
+            notes: params[:notes],
+            taxon_id: taxon.id,
+            user_id: user.id
+        )
         render json: record, status: :created
     end
 
     private
 
     def record_params
-        params.permit(:date, :notes)
+        params.permit(:taxon, :date, :notes)
     end
 
     def render_not_found_response
