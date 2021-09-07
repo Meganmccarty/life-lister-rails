@@ -15,6 +15,7 @@ class RecordsController < ApplicationController
         user = User.find_by(id: session[:user_id])
 
         record = Record.create!(
+            category: params[:category],
             date_seen: params[:date],
             notes: params[:notes],
             taxon_id: taxon.id,
@@ -26,7 +27,7 @@ class RecordsController < ApplicationController
     private
 
     def record_params
-        params.permit(:taxon, :date, :notes)
+        params.permit(:taxon, :category, :date, :notes)
     end
 
     def render_not_found_response
