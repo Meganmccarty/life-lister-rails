@@ -29,7 +29,7 @@ class RecordsController < ApplicationController
         record.update(
             category: params[:category],
             date_seen: params[:date],
-            notes: params[:notes],
+            notes: params[:notes]
         )
         render json: record
     end
@@ -51,11 +51,10 @@ class RecordsController < ApplicationController
     end
 
     def render_not_found_response
-        render json: { error: "Record not found" }, status: :not_found
+        render json: { error: 'Record not found' }, status: :not_found
     end
 
-    def render_unprocessable_entity_response(exception)
-        render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
-
 end
