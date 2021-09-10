@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    get '*other', to: 'welcome#index'
     resources :records, only: [:index, :create, :update, :destroy]
     resources :taxons, only: [:index]
     resources :users, only: [:update]
