@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-    get '*other', to: 'welcome#index'
     resources :records, only: [:index, :create, :update, :destroy]
     resources :taxons, only: [:index]
     resources :users, only: [:update]
@@ -8,4 +7,5 @@ Rails.application.routes.draw do
     get "/profile", to: "users#display"
     post "/login", to: "sessions#create"
     delete "logout", to: "sessions#destroy"
+    get '*other', to: 'welcome#index'
 end
