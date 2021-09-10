@@ -46,7 +46,7 @@ module LifelistApp
                 origins 'http://localhost:3001'
                 resource '/login',
                     methods: [:post],
-                    headers: any,
+                    headers: :any,
                     credentials: true
                 resource '*',
                     headers: :any,
