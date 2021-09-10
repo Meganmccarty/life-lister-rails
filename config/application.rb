@@ -27,6 +27,7 @@ module LifelistApp
         config.middleware.use ActionDispatch::Cookies
         config.middleware.use ActionDispatch::Session::CookieStore
         config.action_dispatch.cookies_same_site_protection = :strict
+        config.session_store :cookie_store, same_site: :none, secure: true
 
         # Configuration for the application, engines, and railties goes here.
         #
