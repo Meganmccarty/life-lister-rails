@@ -4,6 +4,7 @@ class Record < ApplicationRecord
         in: ['Amphibian', 'Bird', 'Butterfly', 'Fish', 'Insect', 'Mammal', 'Plant', 'Reptile', 'Other'],
         message: 'is not a valid category'
     }
+    validates :date_seen, presence: true
     belongs_to :user
     belongs_to :taxon
 end
