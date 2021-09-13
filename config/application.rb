@@ -14,6 +14,7 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require './lib/middleware/consider_all_request_json_middleware'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -24,6 +25,7 @@ module LifelistApp
         # Initialize configuration defaults for originally generated Rails version.
         config.load_defaults 6.1
 
+        config.middleware.insert_before(ActionDispatch::Static, ConsiderAllRequestJsonMiddleware)
         config.middleware.insert_before 0, Rack::Cors do
             allow do
                 origins ['http://localhost:3001', 'https://life-lister.netlify.app']
