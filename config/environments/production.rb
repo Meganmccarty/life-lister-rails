@@ -110,4 +110,9 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore,
+    key: '_session_id',
+    same_site: :none,
+    secure: true,
+    domain: 'frozen-hollows-38826.herokuapp.com')
 end
