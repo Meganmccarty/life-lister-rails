@@ -37,9 +37,7 @@ module LifelistApp
                     credentials: true
             end
         end
-
-        config.middleware.use ActionDispatch::Cookies
-        config.middleware.use ActionDispatch::Session::CookieStore
+        
         # config.action_dispatch.cookies_same_site_protection = :none
 
         # Configuration for the application, engines, and railties goes here.

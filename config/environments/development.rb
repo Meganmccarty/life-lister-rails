@@ -63,6 +63,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore,
-    key: '_session_id')
+  
+  config.session_store :cookie_store, key: '_session_id'
+  config.middleware.use ActionDispatch::Cookies
+  config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+  config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore)
 end
