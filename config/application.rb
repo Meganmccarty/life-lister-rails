@@ -24,20 +24,6 @@ module LifelistApp
         # Initialize configuration defaults for originally generated Rails version.
         config.load_defaults 6.1
 
-        config.middleware.insert_before 0, Rack::Cors do
-            allow do
-                origins 'http://localhost:3001', 'https://life-lister.netlify.app'
-                resource '/login',
-                    methods: [:post],
-                    headers: :any,
-                    credentials: true
-                resource '*',
-                    headers: :any,
-                    methods: [:get, :post, :put, :patch, :delete, :options, :head],
-                    credentials: true
-            end
-        end
-        
         # config.action_dispatch.cookies_same_site_protection = :none
 
         # Configuration for the application, engines, and railties goes here.
