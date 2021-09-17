@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     get "/profile", to: "users#display"
     post "/login", to: "sessions#create"
     delete "logout", to: "sessions#destroy"
-    get '*other', to: 'welcome#index'
+    # get '*other', to: 'welcome#index'
 end
