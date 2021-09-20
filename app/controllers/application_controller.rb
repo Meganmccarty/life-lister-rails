@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
     def set_csrf_cookie
         cookies["CSRF-TOKEN"] = {
             value: form_authenticity_token,
-            expires: 30.minutes.from_now,
             secure: true,
             same_site: :strict,
             domain: 'life-lister.herokuapp.com'
