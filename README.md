@@ -2,6 +2,8 @@
 
 This is the Ruby on Rails backend built for the Life-Lister app. The API has endpoints for users, records, and taxons. The frontend is built with React JS. For the frontend, see the repo here: https://github.com/Meganmccarty/life-lister-react
 
+You can visit the live, frontend website here: https://life-lister.herokuapp.com
+
 ## Get your own copy
 To create your own copy of this project:
 1. Fork this repo
@@ -14,7 +16,7 @@ To create your own copy of this project:
     - Optional: edit the `seed.rb` file and add in your own data, then run `rails db:seed`
 8. Run `rails s`
 
-The website should open up in a new browser tab at `http://localhost:3000`. The main route shouldn't have anything, but you can navigate to one of three endpoints: `/users`, `/records`, and `/taxons`
+The website should open up in a new browser tab at `http://localhost:5000`. The main route shouldn't have anything, but you can navigate to one of three endpoints: `/users`, `/records`, and `/taxons`
 
 ### Configure the frontend (optional)
 If you want to use this API with the corresponding frontend, please see the README for the frontend repo: https://github.com/Meganmccarty/life-lister-react
