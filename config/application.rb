@@ -24,24 +24,25 @@ module LifelistApp
         # Initialize configuration defaults for originally generated Rails version.
         config.load_defaults 6.1
 
-        # config.middleware.insert_before 0, Rack::Cors do
-        #     allow do
-        #         origins 'http://localhost:3001', 'https://life-lister.netlify.app'
-        #         resource '/login',
-        #             methods: [:post],
-        #             headers: :any,
-        #             credentials: true
-        #         resource '*',
-        #             headers: :any,
-        #             methods: [:get, :post, :put, :patch, :delete, :options, :head],
-        #             credentials: true
-        #     end
-        # end
+        config.middleware.insert_before 0, Rack::Cors do
+            allow do
+                # origins 'http://localhost:3001', 'https://life-lister.netlify.app'
+                origins 'https://life-lister.herokuapp.com'
+                # resource '/login',
+                #     methods: [:post],
+                #     headers: :any,
+                #     credentials: true
+                resource '*',
+                    headers: :any,
+                    methods: [:get, :post, :put, :patch, :delete, :options, :head],
+                    credentials: true
+            end
+        end
 
-        config.middleware.use ActionDispatch::Cookies
-        config.middleware.use ActionDispatch::Session::CookieStore
-        config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore)
-        config.action_dispatch.cookies_same_site_protection = :strict
+        # config.middleware.use ActionDispatch::Cookies
+        # config.middleware.use ActionDispatch::Session::CookieStore
+        # config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore)
+        # config.action_dispatch.cookies_same_site_protection = :strict
 
         # Configuration for the application, engines, and railties goes here.
         #
@@ -54,6 +55,7 @@ module LifelistApp
         # Only loads a smaller set of middleware suitable for API only apps.
         # Middleware like session, flash, cookies can be added back manually.
         # Skip views, helpers and assets when generating a new resource.
+        # config.action_controller.forgery_protection_origin_check = false
         config.api_only = true
     end
 end
