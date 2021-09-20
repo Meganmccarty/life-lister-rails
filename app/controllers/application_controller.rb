@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
             expires: 30.minutes.from_now,
             secure: true,
             same_site: :strict,
-            domain: 'https://life-lister.herokuapp.com'
+            domain: 'life-lister.herokuapp.com'
         }
     end
 end
